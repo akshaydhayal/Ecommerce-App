@@ -1,0 +1,51 @@
+As discussed earlier, we have panel constraints there might be delay in the overall process.
+However,we will do our best to complete in best possible time
+ 
+Also,you have any queries around the question,drop me an one-time email.You can submit this by 
+Friday and allow time for a review with a reason mentioned above
+
+Here are details of the assignment regarding the creation of a product list page with filters and 
+shopping cart functionality.
+ 
+Objective:
+ 
+Develop a product list page with filter options.
+Implement an "Add to Cart" button functionality, where clicking on a product adds it to the cart.
+Display a modal with a list of selected products upon checkout.
+You can strategize for UI (perfection isn't necessary as long as functionalities are functional).
+Requirements:
+ 
+Not required but you can utilize a UI framework such as Tailwind CSS (preferred) or Bootstrap.
+Incorporate API data from either Fake Store API or Dummy JSON.
+Tasks:
+ 
+Product List Page:
+ 
+Design and develop a user-friendly product list page displaying items from the chosen API.
+Include filter options (e.g., by category, price range) to facilitate easy navigation for users.
+Add to Cart Functionality:
+ 
+Implement an "
+dd to Cart" button for each product on the list.
+ 
+Upon clicking the button, the corresponding product should be added to the user's shopping cart.
+Checkout Modal:
+ 
+Design a modal window to appear when the user initiates the checkout process.
+Display a list of selected products within the modal, along with their details.
+Submission Guidelines:
+ 
+Feel free to take the time you need, but completing this within 48 hours would be greatly appreciated.
+Include a link to the hosted project 
+provide access to the code repository like GitHub or GitLab (preferred) OR send a zip file with your 
+code
+Resources:
+ 
+Fake Store API Documentation
+Dummy JSON Documentation
+If you have any questions or need clarification on any aspect of the assignment, feel free to reach 
+out to me. I'm here to assist you throughout the process.
+ 
+Looking forward to seeing your innovative implementation!
+ 
+Thanks
