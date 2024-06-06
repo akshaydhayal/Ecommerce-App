@@ -5,6 +5,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { BiShoppingBag } from "react-icons/bi";
 import { TbShoppingBag } from "react-icons/tb";
 import { MdOutlineNotificationsNone } from "react-icons/md";
+import { BsShop } from "react-icons/bs";
 
 function Navbar() {
     const links=[
@@ -16,8 +17,9 @@ function Navbar() {
     ]
     return (
         <div className="flex justify-between px-16">
-            <div>
-                <p className="font-bold text-xl font-serif tracking-tight">Shop<span className="text-red-700">Kart</span></p>    
+            <div className="flex gap-3 items-center">
+                <BsShop className="w-10 h-10 text-red-700 "/>
+                <p className="font-semibold text-3xl font-serif tracking-tight">Shop<span className="text-red-700">Kart</span></p>    
             </div>
             <div className="flex gap-3">
                 {links.map((l)=>{
