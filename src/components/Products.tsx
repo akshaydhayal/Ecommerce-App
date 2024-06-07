@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useGetAllProducts from "../hooks/useGetAllProducts";
 import Product from "./Product";
+import useGetFirstPageProducts from "../hooks/useGetFirstPageProducts";
 
 
 // {
@@ -65,14 +66,34 @@ import Product from "./Product";
 // }
 
 function Products({setCartQuantity}) {
-    let products=useGetAllProducts();
+  // const [firstPageProducts,setFirstPageProducts]=useGetFirstPageProducts();
+  const [currPage,setCurrPage]=useState(1);
+  let firstPageProducts=useGetFirstPageProducts(currPage);
 
-    // console.log("prodcuts in products page : "+JSON.stringify(products));
+  // const [firstPageProducts,setFirstPageProducts]=useState(useGetFirstPageProducts(currPage));
+
+  // let [products,setProducts]=useState(useGetAllProducts());
+
+  // let products=useGetAllProducts();
+ 
+  
+  useEffect(()=>{
+    // let firstproducts=useGetFirstPageProducts(currPage);
+    // setFirstPageProducts(firstproducts);
+    // if(products){
+    //   const nextPageProducts=products.filter(i=>i.id>(currPage-1)*15 && i.id<=currPage*15);
+    //   console.log("next page prod: ",JSON.stringify(nextPageProducts));
+    //   setFirstPageProducts(nextPageProducts);
+    // }
+  },[currPage])
+
+    console.log("prodcuts in products page : "+JSON.stringify(firstPageProducts));
     return (
       <div>
         <p>Products</p>
         <div className="w-full grid grid-cols-3 gap-6">
-            {products && products.map((p)=>{
+            {/* {products && products.map((p)=>{ */}
+            {firstPageProducts && firstPageProducts.map((p)=>{
               return <Product id={p.id} title={p.title} description={p.description} price={p.price} 
                       rating={p.rating} imageUrl={p.images[0]} thumbnail={p.thumbnail} category={p.category}
                        reviewsCount={p.reviews.length} setCartQuantity={setCartQuantity} 
@@ -80,6 +101,10 @@ function Products({setCartQuantity}) {
               />
             })}
         </div>
+        <p className="border px-2 p-1">{currPage}</p>
+        <button onClick={()=>{
+          setCurrPage(old=>old+1);
+        }}>Next Page</button>
       </div>
     );
 }

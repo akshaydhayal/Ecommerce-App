@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { FiPlusCircle } from "react-icons/fi";
 import { FiMinusCircle } from "react-icons/fi";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { cartItems } from "../store/cartItems";
 
 function Product({id,title, description, rating, reviewsCount,imageUrl,thumbnail,price,setCartQuantity,category,tag}:
     {id:number,title:string,description:string,rating:number, reviewsCount:number,
       imageUrl:string,thumbnail:string,price:number,category:string,tag:string}) {
   const [quantity,setQuantity]=useState(1);
+  const [cartItem,setCartItems]=useRecoilState(cartItems);
   return (
     <div className="w-full p-4 border border-slate-600 rounded-lg flex flex-col gap-3">
       <div>
@@ -54,17 +57,19 @@ function Product({id,title, description, rating, reviewsCount,imageUrl,thumbnail
         </button>
         <button className="w-1/2 font-medium text-lg border-2 border-slate-400 rounded-md" onClick={()=>{
           setCartQuantity(old=>old+1);
-          const oldCart=localStorage.getItem('cart-items');
-          let updatedCart;
-          if(oldCart){
-            updatedCart=JSON.stringify([...JSON.parse(oldCart),{id,title,price,quantity,thumbnail,category,tag}])
-          }
-          else{
-            updatedCart=JSON.stringify([{
-              id,title,price,quantity,thumbnail,category,tag
-            }])
-          }
-          localStorage.setItem('cart-items',updatedCart);
+          // const oldCart=localStorage.getItem('cart-items');
+          // let updatedCart;
+          // if(oldCart){
+          //   updatedCart=JSON.stringify([...JSON.parse(oldCart),{id,title,price,quantity,thumbnail,category,tag}])
+          // }
+          // else{
+          //   updatedCart=JSON.stringify([{
+          //     id,title,price,quantity,thumbnail,category,tag
+          //   }])
+          // }
+          // localStorage.setItem('cart-items',updatedCart);
+
+          setCartItems([...cartItem,{id,title,price,quantity,thumbnail,category,tag}]);
         }
       }
         >  Add to cart

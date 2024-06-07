@@ -1,52 +1,77 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { cartCheckoutStatus, cartItems } from "../store/cartItems";
+import { ImCross } from "react-icons/im";
+import { RxCross2 } from "react-icons/rx";
+import { RxCross1 } from "react-icons/rx";
 
 function Checkout() {
-    const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cart-items")));
-    let totalCartItemsCosts=0;
-    cartItems.forEach((i)=>{
-        totalCartItemsCosts+=i.price*i.quantity;
-    })
-    const [totalCartItemsCost, setTotalCartItemsCost]=useState(Math.round(totalCartItemsCosts));
-    const [deliveryCost, setDeliveryCost]=useState(Math.round(0.1*totalCartItemsCosts));
+    const setCartCheckoutStatus=useSetRecoilState(cartCheckoutStatus);
+    const [cartItem,setCartItem]=useRecoilState(cartItems);
+    const [totalCartItemsCost, setTotalCartItemsCost]=useState(0);
+    const [deliveryCost, setDeliveryCost]=useState(0);
 
-    console.log(cartItems);
-
-    function addQuantity(itemId:number){
-        // setCartItems((old)=>{
-        //     return(
-        //         old.filter((item)=>{
-        //             if(item.id===itemId){
-        //                 return {...item,quantity:item.quantity+1}
-        //             }else{
-        //                 return item;
-        //             }
-        //         })
-        //     )
-        // })
-        
-        const updatedCartItems=cartItems.filter((item)=>{
-            console.log("id : ",item.id, " itemId : ",itemId);
-            console.log(item.id==itemId);
-            console.log(item.id===itemId);
-            if(item.id===itemId){
-                return {quantity:9,...item}
-                // return {...item,quantity:item.quantity+1}
-            }else{
-                return item;
-            }
+    useEffect(()=>{
+        let totalCartItemsCosts=0;
+        cartItem.forEach((i)=>{
+            totalCartItemsCosts+=i.price*i.quantity;
         })
-        setCartItems(updatedCartItems);
+        setTotalCartItemsCost(Math.round(totalCartItemsCosts));
+        setDeliveryCost(Math.round(0.1*totalCartItemsCosts));
+    },[cartItem]);
+
+    console.log(cartItem);
+
+    function addQuantity(itemId:number){    
+        // const updatedCartItems=cartItems.map((item)=>{
+        //     console.log("id : ",item.id, " itemId : ",itemId);
+        //     console.log(item.id==itemId);
+        //     console.log(item.id===itemId);
+        //     if(item.id===itemId){
+        //         return {...item,quantity:item.quantity+1}
+        //     }
+        //    return item;
+            
+        // })
+        // setCartItems(updatedCartItems);
+        // console.log("updated cart",JSON.stringify(updatedCartItems));  
+        // localStorage.setItem('cart-items',JSON.stringify(updatedCartItems));
+
+
+        const updatedCartItems=cartItem.map((item)=>{
+            if(item.id===itemId){
+                return {...item,quantity:item.quantity+1}
+            }
+            return item;
+        })
+        setCartItem(updatedCartItems);
+        setTotalCartItemsCost(Math.round(findCartCosts()))
+        setDeliveryCost(Math.round(0.1*findCartCosts()))
         console.log("updated cart",JSON.stringify(updatedCartItems));  
-        localStorage.setItem('cart-items',JSON.stringify(updatedCartItems));
+    }
+
+    function removeQuantity(itemId:number){    
+        const updatedCartItems=cartItem.map((item)=>{
+            if(item.id===itemId && item.quantity>1){
+                return {...item,quantity:item.quantity-1}
+            }
+            return item;
+        })
+        setCartItem(updatedCartItems);
+        console.log("updated cart",JSON.stringify(updatedCartItems));  
     }
     return (
-        <div className=" flex justify-center">
+        <div className="w-screen h-screen flex justify-center ">
             <div className="w-2/5 border border-green-700 p-4 flex flex-col gap-4">
-                <div>
+                <div className="flex justify-between items-center">
                     <p className="font-serif font-semibold text-xl">Your Cart</p>
+                    <RxCross2 className="w-6 h-6" onClick={()=>{
+                        setCartCheckoutStatus(false);
+                    }}/>
                 </div>
                 <div className="flex flex-col gap-2">
-                    {cartItems.map((i)=>{
+                    {/* {cartItems .map((i)=>{ */}
+                    {cartItem.map((i)=>{
                         return <div className="w-full h-20 flex items-center gap-2">
                             <img src={i.thumbnail} className="h-full w-1/5 bg-slate-200 rounded-sm"/>
                             <div className="w-3/5 ">
@@ -65,7 +90,9 @@ function Checkout() {
                                      }}>+</div>
                                     <p className="border border-slate-500 px-2 text-sm font-medium">{i.quantity}</p>
                                     <div className="border border-slate-500 text-center font-medium w text-base m-0 p-0 px-2
-                                     hover:bg-slate-950 hover:text-white cursor-pointer">-</div>
+                                     hover:bg-slate-950 hover:text-white cursor-pointer" onClick={()=>{
+                                        removeQuantity(i.id);
+                                     }}>-</div>
                                 </div>
                             </div>
                         </div>
