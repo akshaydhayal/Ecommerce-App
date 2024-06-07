@@ -7,7 +7,7 @@ import { TbShoppingBag } from "react-icons/tb";
 import { MdOutlineNotificationsNone } from "react-icons/md";
 import { BsShop } from "react-icons/bs";
 
-function Navbar() {
+function Navbar({cartQuantity}) {
     const links=[
         {title:"Home",link:"/home"},
         {title:"Our Shop",link:"/home"},
@@ -15,6 +15,7 @@ function Navbar() {
         {title:"Blogs",link:"/home"},
         {title:"Contact us",link:"/home"},
     ]
+    console.log("cartQuantity",cartQuantity);
     return (
         <div className="flex justify-between px-16">
             <div className="flex gap-3 items-center">
@@ -30,7 +31,10 @@ function Navbar() {
             </div>
             <div className="flex gap-3">
                 <MdOutlineNotificationsNone className="w-8 h-8"/>
-                <MdOutlineShoppingCart className="w-8 h-8"/>
+                <div className="relative flex">
+                    <MdOutlineShoppingCart className="w-8 h-8"/>
+                    <p className="absolute bg-red-700 text-white">{cartQuantity}</p>
+                </div>
                 {/* <IoCartOutline className="w-8 h-8"/> */}
                 {/* <HiOutlineShoppingBag className="w-8 h-8"/> */}
                 {/* <BiShoppingBag className="w-8 h-8"/> */}
