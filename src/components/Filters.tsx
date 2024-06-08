@@ -27,9 +27,11 @@ function Filters() {
 
     console.log("categories : ",categories);
     return (
-    <div className="overflow-auto h-[90vh]">
+    // <div className=" h-[90vh] divide-y divide-slate-400">
+    <div className=" h-[90vh] ">
         <p className="font-bold text-xl font-serif px-4 pt-4">Filters</p>
-      <div className="flex flex-col justify-center px-8 p-4 gap-6 ">
+      {/* <div className="flex flex-col justify-center px-6 p-4 gap-6 divide-y divide-slate-400"> */}
+      <div className="flex flex-col justify-center px-6 p-4 gap-6">
         <div>
           <p className="font-semibold text-lg font-serif">Categories</p>
           <div className="flex flex-col gap-2 h-[30vh] overflow-auto">

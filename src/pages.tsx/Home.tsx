@@ -11,7 +11,7 @@ function Home({setCartQuantity}) {
     // }
     console.log("checkoutStataus in home page: ",checkoutStatus)
     return (
-        <div>
+        <div className="pt-4">
             {checkoutStatus && <Checkout/>}
             {!checkoutStatus && <div className="flex w-screen">
                 <div className="w-1/5 border">

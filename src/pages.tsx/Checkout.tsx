@@ -72,7 +72,7 @@ function Checkout() {
     }
     return (
         <div className="w-screen h-screen flex justify-center py-2">
-            <div className="w-2/5 p-4 h-max flex flex-col gap-4 rounded-lg shadow-xl border">
+            <div className="w-2/5 p-4 h-max flex flex-col gap-4 rounded-lg shadow-xl border border-slate-300 divide-y divide-slate-400">
                 <div className="flex justify-between items-center">
                     <p className="font-serif font-semibold text-xl">Your Cart</p>
                     <RxCross2 className="w-6 h-6 hover:w-7 hover:h-7 cursor-pointer" onClick={()=>{
@@ -109,7 +109,7 @@ function Checkout() {
                     })}
                 </div>
 
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 py-2">
                     <p className="font-semibold text-lg font-sans">Have a promotion code?</p>
                     <div className="flex gap-2">
                         <input type="text" className="border w-3/4 border-slate-500 rounded-md
@@ -118,7 +118,7 @@ function Checkout() {
                     </div>
                 </div>
 
-                <div>
+                <div className="py-2">
                     <p className="font-semibold text-lg font-sans mb-2">Order Summary</p>
                     <div className="flex justify-between">
                         <p className="font-medium font-serif px-2">Items Cost</p>
@@ -131,11 +131,11 @@ function Checkout() {
                         {/* <p className="font-semibold text-lg font-mono tracking-tight">${Math.round(0.1*totalCartItemsCost)}</p> */}
                     </div>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between py-2">
                     <p className="font-semibold text-xl font-serif tracking-tight">Total</p>
                     <p className="font-semibold text-xl font-mono tracking-tight">${totalCartItemsCost+deliveryCost}</p>
                 </div>
-                <button className="bg-slate-950 text-white font-medium text-lg p-2 rounded-md">Conform checkout</button>
+                <button className="bg-slate-950 text-white font-medium text-lg p-2 rounded-md">Confirm checkout</button>
             </div>
         </div>
     );

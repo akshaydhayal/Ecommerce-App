@@ -14,3 +14,8 @@ export const filterByRating=atom({
     key:'filterByRating',
     default:null
 })
+
+export const filterBySearch=atom({
+    key:'filterBySearch',
+    default:null
+})
