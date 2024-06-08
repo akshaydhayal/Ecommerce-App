@@ -4,10 +4,12 @@ import Navbar from "./components/Navbar";
 import { useState } from "react";
 import Checkout from "./pages.tsx/Checkout";
 import { RecoilRoot } from "recoil";
+import { Toaster } from "react-hot-toast";
 function App() {
   const [cartQuantity, setCartQuantity] = useState(0);
   return (
     <div>
+      <Toaster/>
       <RecoilRoot>
         <Router>
           <Navbar cartQuantity={cartQuantity} />

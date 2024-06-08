@@ -4,6 +4,8 @@ import { IoCartOutline } from "react-icons/io5";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { BiShoppingBag } from "react-icons/bi";
 import { TbShoppingBag } from "react-icons/tb";
+import { RxCross2 } from "react-icons/rx";
+
 import { RxAvatar } from "react-icons/rx";
 import { IoSearch } from "react-icons/io5";
 
@@ -44,15 +46,29 @@ function Navbar({cartQuantity}) {
                     </Link>
                 })} */}
                 <div className="w-full flex">
-                    <input type="text" className="p-2 px-6 rounded-l-lg border border-slate-600 
-                    w-10/12 placeholder:text-slate-600 " placeholder="Search ShopKart" onChange={(e)=>{
+                    <div className="flex w-10/12 relative">
+                    <input type="text" value={searchProduct} className="p-2 px-6 rounded-l-lg border border-slate-600 
+                    w-full placeholder:text-slate-600 " placeholder="Search ShopKart" onChange={(e)=>{
                         setSearchProduct(e.target.value);
                     }}/>
+                    {/* <input type="text" className="p-2 px-6 rounded-l-lg border border-slate-600 
+                    w-10/12 placeholder:text-slate-600 " placeholder="Search ShopKart" onChange={(e)=>{
+                        setSearchProduct(e.target.value);
+                    }}/> */}
+                    <div className="absolute right-0 top-0 h-full flex justify-center items-center px-3">
+                        <RxCross2 className="w-5 h-5 cursor-pointer hover:w-6 hover:h-6" onClick={()=>{
+                            setSearchedProduct(null);
+                            setSearchProduct('');
+                        }}/>
+
+                    </div>
+                    {/* <RxCross2 className="absolute right-2 top-3 w-5 h-5"/> */}
+                    </div>
                     <button type="submit" className="w-2/12 border border-slate-600 p-2 flex justify-center
-                     items-center rounded-r-lg" onClick={()=>{
+                     items-center rounded-r-lg hover:bg-slate-100" onClick={()=>{
                          setSearchedProduct(searchProduct);
                      }}>
-                        <IoSearch className="w-7 h-7 text-blue-600"/>
+                        <IoSearch className="w-7 h-7 text-blue-500 hover:text-blue-700"/>
                     </button>
                 </div>
             </div>

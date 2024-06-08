@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import useGetAllProducts from "../hooks/useGetAllProducts";
 import Product from "./Product";
 import useGetFirstPageProducts from "../hooks/useGetFirstPageProducts";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { filterByPrice, filterByRating, filterBySearch, selectedFilterCategory } from "../store/filterProducts";
 
 

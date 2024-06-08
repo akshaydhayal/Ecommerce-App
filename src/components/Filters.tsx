@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 function Filters() {
     const [categories,setCategories]=useState([]);
     const [filteredCategory,setFilterCategory]=useRecoilState(selectedFilterCategory);
+
     const setFilterByPrice=useSetRecoilState(filterByPrice);
     const [filterLowestPrice,setFilterLowestPrice]=useState<number>(0);
     const [filterHighestPrice,setFilterHighestPrice]=useState<number>(0);
@@ -32,8 +33,14 @@ function Filters() {
         <p className="font-bold text-xl font-serif px-4 pt-4">Filters</p>
       {/* <div className="flex flex-col justify-center px-6 p-4 gap-6 divide-y divide-slate-400"> */}
       <div className="flex flex-col justify-center px-6 p-4 gap-6">
-        <div>
-          <p className="font-semibold text-lg font-serif">Categories</p>
+        <div className="flex flex-col gap-2">
+            <div className="flex justify-between items-center">
+              <p className="font-semibold text-lg font-serif">Categories</p>
+              <p className=" text-blue-700 hover:text-blue-600 hover:underline 
+              hover:font-semibold text-sm font-medium cursor-pointer font-sans " onClick={()=>{
+                setFilterCategory(null);
+              }}>CLEAR</p>
+            </div>
           <div className="flex flex-col gap-2 h-[30vh] overflow-auto">
             {categories && categories.map((c) => {
               return (

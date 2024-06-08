@@ -4,6 +4,7 @@ import { cartCheckoutStatus, cartItems } from "../store/cartItems";
 import { ImCross } from "react-icons/im";
 import { RxCross2 } from "react-icons/rx";
 import { RxCross1 } from "react-icons/rx";
+import toast from "react-hot-toast";
 
 function Checkout() {
     const setCartCheckoutStatus=useSetRecoilState(cartCheckoutStatus);
@@ -135,7 +136,24 @@ function Checkout() {
                     <p className="font-semibold text-xl font-serif tracking-tight">Total</p>
                     <p className="font-semibold text-xl font-mono tracking-tight">${totalCartItemsCost+deliveryCost}</p>
                 </div>
-                <button className="bg-slate-950 text-white font-medium text-lg p-2 rounded-md">Confirm checkout</button>
+                <button className="bg-slate-950 text-white font-medium text-lg p-2 
+                rounded-md" onClick={()=>{
+                    // toast.success("Order Placed")
+
+                    toast.promise(
+                        new Promise((res)=>{
+                            setTimeout(()=>{
+                                res('Hi')
+                                setCartCheckoutStatus(false);
+                                setCartItem([]);
+                            },2000);
+                        }), {
+                      loading: "Processing Order...",
+                      success: <b>Congrats, Order Placed Sucessfully!!</b>,
+                      error: <b>Could not save.</b>,
+                    });
+
+                }}>Confirm checkout</button>
             </div>
         </div>
     );
