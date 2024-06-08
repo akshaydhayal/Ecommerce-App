@@ -1,9 +1,5 @@
 import { Link } from "react-router-dom";
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { IoCartOutline } from "react-icons/io5";
-import { HiOutlineShoppingBag } from "react-icons/hi";
-import { BiShoppingBag } from "react-icons/bi";
-import { TbShoppingBag } from "react-icons/tb";
 import { RxCross2 } from "react-icons/rx";
 
 import { RxAvatar } from "react-icons/rx";
@@ -12,13 +8,11 @@ import { IoSearch } from "react-icons/io5";
 import { MdOutlineNotificationsNone } from "react-icons/md";
 import { BsShop } from "react-icons/bs";
 import { useState } from "react";
-import Checkout from "../pages.tsx/Checkout";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { cartCheckoutStatus, cartItems } from "../store/cartItems";
 import { filterBySearch } from "../store/filterProducts";
 
-function Navbar({cartQuantity}) {
-    // const [checkoutStatus,setCheckoutStatus]=useState(false);
+function Navbar({cartQuantity}:{cartQuantity:number}) {
     const setCartCheckoutStatus = useSetRecoilState(cartCheckoutStatus);
     const setSearchedProduct= useSetRecoilState(filterBySearch);
     const [searchProduct,setSearchProduct]= useState<string>('');
@@ -26,10 +20,6 @@ function Navbar({cartQuantity}) {
     const cartItem=useRecoilValue(cartItems);
     console.log("cartItems with recoil: ",JSON.stringify(cartItem));
 
-    const links=[
-        {title:"Blogs",link:"/home"},
-        {title:"Contact us",link:"/home"},
-    ]
     console.log("cartQuantity",cartQuantity);
     return (
         <div className="flex justify-between px-10 p-2 h-[10vh] bg-slate-50">
@@ -40,11 +30,6 @@ function Navbar({cartQuantity}) {
                 </div>
             </Link>
             <div className="flex gap-3 w-2/5">
-                {/* {links.map((l)=>{
-                    return <Link to={l.link}>
-                        <p className="font-semibold text-slate-600 text-lg">{l.title}</p>
-                    </Link>
-                })} */}
                 <div className="w-full flex">
                     <div className="flex w-10/12 relative">
                     <input type="text" value={searchProduct} className="p-2 px-6 rounded-l-lg border border-slate-600 
@@ -75,7 +60,6 @@ function Navbar({cartQuantity}) {
             <div className="flex gap-3">
                 <MdOutlineNotificationsNone className="w-8 h-8"/>
                 <div className="relative flex border" onClick={()=>{
-                    // setCheckoutStatus(true);
                     setCartCheckoutStatus(true);
                 }}>
                     <MdOutlineShoppingCart className="w-8 h-8 border"/>

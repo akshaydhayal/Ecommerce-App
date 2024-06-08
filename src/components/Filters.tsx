@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { filterByPrice, filterByRating, selectedFilterCategory } from "../store/filterProducts";
-import { Link } from "react-router-dom";
 
 function Filters() {
     const [categories,setCategories]=useState([]);
@@ -28,10 +27,8 @@ function Filters() {
 
     console.log("categories : ",categories);
     return (
-    // <div className=" h-[90vh] divide-y divide-slate-400">
     <div className=" h-[90vh] ">
         <p className="font-bold text-xl font-serif px-4 pt-4">Filters</p>
-      {/* <div className="flex flex-col justify-center px-6 p-4 gap-6 divide-y divide-slate-400"> */}
       <div className="flex flex-col justify-center px-6 p-4 gap-6">
         <div className="flex flex-col gap-2">
             <div className="flex justify-between items-center">
@@ -67,12 +64,12 @@ function Filters() {
           <div className="flex items-center gap-2">
             <input type="text" placeholder="$5" className="placeholder:text-slate-500
              border px-3 p-1 w-1/3 border-slate-500 rounded-sm" onChange={(e)=>{
-              setFilterLowestPrice(e.target.value)
+              setFilterLowestPrice(Number(e.target.value))
              }}/>
             <p className="text-slate-600">to</p>
             <input type="text" placeholder="$10" className="placeholder:text-slate-500
              border px-3 p-1 w-1/3 border-slate-500 rounded-sm" onChange={(e)=>{
-              setFilterHighestPrice(e.target.value);
+              setFilterHighestPrice(Number(e.target.value));
              }}/>
           </div>
           <button className="bg-red-500 text-white font-medium text-base p-[6px] 

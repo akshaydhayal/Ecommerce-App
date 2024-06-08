@@ -6,7 +6,7 @@ import Checkout from "./pages.tsx/Checkout";
 import { RecoilRoot } from "recoil";
 import { Toaster } from "react-hot-toast";
 function App() {
-  const [cartQuantity, setCartQuantity] = useState(0);
+  const [cartQuantity, setCartQuantity] = useState<number>(0);
   return (
     <div>
       <Toaster/>

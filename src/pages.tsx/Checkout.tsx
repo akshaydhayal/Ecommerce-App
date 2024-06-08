@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { cartCheckoutStatus, cartItems } from "../store/cartItems";
-import { ImCross } from "react-icons/im";
 import { RxCross2 } from "react-icons/rx";
-import { RxCross1 } from "react-icons/rx";
 import toast from "react-hot-toast";
 
 function Checkout() {
@@ -14,7 +12,7 @@ function Checkout() {
 
     useEffect(()=>{
         let totalCartItemsCosts=0;
-        cartItem.forEach((i)=>{
+        cartItem.forEach((i:any)=>{
             totalCartItemsCosts+=i.price*i.quantity;
         })
         setTotalCartItemsCost(Math.round(totalCartItemsCosts));
@@ -39,27 +37,22 @@ function Checkout() {
         // localStorage.setItem('cart-items',JSON.stringify(updatedCartItems));
 
 
-        const updatedCartItems=cartItem.map((item)=>{
+        const updatedCartItems:any=cartItem.map((item:any)=>{
             if(item.id===itemId){
                 return {...item,quantity:item.quantity+1}
             }
             return item;
         })
         setCartItem(updatedCartItems);
-        setTotalCartItemsCost(Math.round(findCartCosts()))
-        setDeliveryCost(Math.round(0.1*findCartCosts()))
+        // setTotalCartItemsCost(Math.round(findCartCosts()))
+        // setDeliveryCost(Math.round(0.1*findCartCosts()))
         console.log("updated cart",JSON.stringify(updatedCartItems));  
     }
 
     function removeQuantity(itemId:number){    
-        // const updatedCartItems=cartItem.map((item)=>{
-        //     if(item.id===itemId && item.quantity>1){
-        //         return {...item,quantity:item.quantity-1}
-        //     }
-        //     return item;
-        // })
-        let updatedCartItems=[];
-        cartItem.forEach((item)=>{
+        let updatedCartItems: {id:number,title:string,price:number,quantity:number,thumbnail:string,
+          category:string,tag:string}[] = [];
+        cartItem.forEach((item:any)=>{
             if(item.id===itemId){
                 if (item.quantity > 1){
                     updatedCartItems.push({...item,quantity: item.quantity - 1,});
@@ -81,8 +74,7 @@ function Checkout() {
                     }}/>
                 </div>
                 <div className="flex flex-col gap-2">
-                    {/* {cartItems .map((i)=>{ */}
-                    {cartItem.map((i)=>{
+                    {cartItem.map((i:any)=>{
                         return <div className="w-full h-20 flex items-center gap-2">
                             <img src={i.thumbnail} className="h-full w-1/5 bg-slate-200 rounded-sm"/>
                             <div className="w-3/5 ">
@@ -123,13 +115,11 @@ function Checkout() {
                     <p className="font-semibold text-lg font-sans mb-2">Order Summary</p>
                     <div className="flex justify-between">
                         <p className="font-medium font-serif px-2">Items Cost</p>
-                        {/* <p className="font-semibold text-lg font-mono tracking-tight">${Math.round(totalCartItemsCost)}</p> */}
                         <p className="font-semibold text-lg font-mono tracking-tight">${totalCartItemsCost}</p>
                     </div>
                     <div className="flex justify-between">
                         <p className="font-medium font-serif px-2">Delivery Cost</p>
                         <p className="font-semibold text-lg font-mono tracking-tight">${deliveryCost}</p>
-                        {/* <p className="font-semibold text-lg font-mono tracking-tight">${Math.round(0.1*totalCartItemsCost)}</p> */}
                     </div>
                 </div>
                 <div className="flex justify-between py-2">
@@ -138,7 +128,6 @@ function Checkout() {
                 </div>
                 <button className="bg-slate-950 text-white font-medium text-lg p-2 
                 rounded-md" onClick={()=>{
-                    // toast.success("Order Placed")
 
                     toast.promise(
                         new Promise((res)=>{
