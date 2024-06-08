@@ -13,6 +13,14 @@ Welcome to our Shopping Ecommerce Project! This application is designed to provi
    - Customers can add products to their shopping cart for later purchase.
    - The cart dynamically updates to display the total number of items and the total price.
 
+
+
+## Video Demo:
+
+
+
+https://github.com/akshaydhayal/Ecommerce-App/assets/44504509/36af149b-c94f-45b4-b961-288d541a7a3c
+
 ## Project Structure:
 
 - **src/components/Navbar.js:** Component responsible for rendering the navigation bar at the top of the application, providing links for easy navigation between different sections. It includes the following features:
@@ -25,17 +33,6 @@ Welcome to our Shopping Ecommerce Project! This application is designed to provi
 
 - **src/components/Product.js:** Component representing individual product items within the product catalog, displaying details such as name, price, description, and an option to add the item to the shopping cart.
 
-## Video Demo:
-
-
-
-https://github.com/akshaydhayal/Ecommerce-App/assets/44504509/36af149b-c94f-45b4-b961-288d541a7a3c
-
-
-
-## Live Link:
-
-Access the live version of the project [here](link_to_live_project).
 
 ## Technologies Used:
 
