@@ -13,7 +13,7 @@ export default function useGetFirstPageProducts(pageNo:number) {
         }
       );
       const data = await response.json();
-      console.log(data);
+      console.log('data 0 in hook',data.products[0]);
       if (data.products) {
         setProducts(data.products);
         productData=data.products;

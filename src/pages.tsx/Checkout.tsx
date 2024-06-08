@@ -65,7 +65,7 @@ function Checkout() {
             <div className="w-2/5 border border-green-700 p-4 flex flex-col gap-4">
                 <div className="flex justify-between items-center">
                     <p className="font-serif font-semibold text-xl">Your Cart</p>
-                    <RxCross2 className="w-6 h-6" onClick={()=>{
+                    <RxCross2 className="w-6 h-6 hover:w-7 hover:h-7 cursor-pointer" onClick={()=>{
                         setCartCheckoutStatus(false);
                     }}/>
                 </div>

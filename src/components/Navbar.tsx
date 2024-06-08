@@ -27,7 +27,7 @@ function Navbar({cartQuantity}) {
     ]
     console.log("cartQuantity",cartQuantity);
     return (
-        <div className="flex justify-between px-16">
+        <div className="flex justify-between px-16 h-[10vh]">
             <Link to="/">
                 <div className="flex gap-3 items-center cursor-pointer">
                     <BsShop className="w-10 h-10 text-red-700 "/>
