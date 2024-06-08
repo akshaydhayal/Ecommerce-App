@@ -32,6 +32,9 @@ Watch a video demonstration of our project [here](https://github.com/akshaydhaya
 
 ![Watch the video](https://img.youtube.com/vi/YbdpTitbytE/0.jpg)](https://www.youtube.com/watch?v=YbdpTitbytE)
 
+[![Watch the video](https://i.sstatic.net/Vp2cE.png)](https://youtu.be/vt5fpE0bzSY)
+
+
 ## Live Link:
 
 Access the live version of the project [here](link_to_live_project).
