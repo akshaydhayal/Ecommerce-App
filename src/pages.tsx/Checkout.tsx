@@ -51,18 +51,28 @@ function Checkout() {
     }
 
     function removeQuantity(itemId:number){    
-        const updatedCartItems=cartItem.map((item)=>{
-            if(item.id===itemId && item.quantity>1){
-                return {...item,quantity:item.quantity-1}
+        // const updatedCartItems=cartItem.map((item)=>{
+        //     if(item.id===itemId && item.quantity>1){
+        //         return {...item,quantity:item.quantity-1}
+        //     }
+        //     return item;
+        // })
+        let updatedCartItems=[];
+        cartItem.forEach((item)=>{
+            if(item.id===itemId){
+                if (item.quantity > 1){
+                    updatedCartItems.push({...item,quantity: item.quantity - 1,});
+                }
+            }else{
+                updatedCartItems.push(item);
             }
-            return item;
         })
         setCartItem(updatedCartItems);
         console.log("updated cart",JSON.stringify(updatedCartItems));  
     }
     return (
-        <div className="w-screen h-screen flex justify-center ">
-            <div className="w-2/5 border border-green-700 p-4 flex flex-col gap-4">
+        <div className="w-screen h-screen flex justify-center py-2">
+            <div className="w-2/5 p-4 h-max flex flex-col gap-4 rounded-lg shadow-xl border">
                 <div className="flex justify-between items-center">
                     <p className="font-serif font-semibold text-xl">Your Cart</p>
                     <RxCross2 className="w-6 h-6 hover:w-7 hover:h-7 cursor-pointer" onClick={()=>{

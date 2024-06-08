@@ -58,7 +58,7 @@ function Products({setCartQuantity}) {
       setCurrentPageProducts(updatedCurrentPage);
     }
     
-    
+
     function filterProductsByRating(){
       const ratingNumber=Number(ratingFilter.split('+')[0]);
       console.log('rating filter type : ',typeof(ratingFilter));
@@ -79,7 +79,7 @@ function Products({setCartQuantity}) {
       console.log("all prod fetch called")
       fetchProducts();
     }
-  },[currPage,filteredCategory,priceFilters])
+  },[currPage,filteredCategory,priceFilters,ratingFilter])
 
     console.log("price filters",priceFilters);
     console.log("rating filters",ratingFilter,"type: ",typeof(ratingFilter));
