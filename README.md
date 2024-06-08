@@ -27,7 +27,7 @@ Welcome to our Shopping Ecommerce Project! This application is designed to provi
 
 ## Video Demo:
 
-Watch a video demonstration of our project [here](link_to_video_demo).
+Watch a video demonstration of our project [here](https://github.com/akshaydhayal/Ecommerce-App/blob/main/Project%20Demo.webm).
 
 ## Live Link:
 
