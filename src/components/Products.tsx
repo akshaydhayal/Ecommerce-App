@@ -175,7 +175,7 @@ function Products({setCartQuantity,}: {setCartQuantity: React.Dispatch<React.Set
 
       <div className="flex justify-center">
         <button
-          className="border-2 border-slate-600 px-4 font-medium font-mono 
+          className="border-2 border-slate-600 px-6 font-medium font-mono 
            tracking-tighter cursor-pointer hover:bg-slate-200 rounded-sm hover:font-semibold"
           onClick={() => {
             setCurrPage((old) => (old > 1 ? old - 1 : old));
@@ -183,11 +183,11 @@ function Products({setCartQuantity,}: {setCartQuantity: React.Dispatch<React.Set
         >
           Previous Page
         </button>
-        <p className="border-t-2 border-b-2 px-4 p-1 border-slate-600 font-medium">
+        <p className="border-t-2 border-b-2 px-6 p-1 border-slate-600 font-medium">
           {currPage}
         </p>
         <button
-          className="border-2 border-slate-600 px-4 font-medium font-mono 
+          className="border-2 border-slate-600 px-6 font-medium font-mono 
           tracking-tighter cursor-pointer hover:bg-slate-200 hover:font-semibold"
           onClick={() => {
             setCurrPage((old) => old + 1);

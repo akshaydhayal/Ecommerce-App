@@ -15,7 +15,7 @@ function Home({setCartQuantity,}: {setCartQuantity: React.Dispatch<React.SetStat
           <div className="w-1/5 border">
             <Filters />
           </div>
-          <div className="w-4/5 border">
+          <div className="w-4/5 ">
             <Products setCartQuantity={setCartQuantity} />
           </div>
         </div>

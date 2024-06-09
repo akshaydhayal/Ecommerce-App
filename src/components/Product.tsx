@@ -32,7 +32,7 @@ function Product({
   const setCartCheckoutStatus = useSetRecoilState(cartCheckoutStatus);
 
   return (
-    <div className="w-full p-4 border border-slate-600 rounded-lg flex flex-col gap-3">
+    <div className="w-full p-4 border hover:border-[1.5px] hover:border-slate-400 cursor-pointer border-slate-600 rounded-lg flex flex-col gap-3">
       <div>
         <img
           src={thumbnail}
@@ -56,14 +56,14 @@ function Product({
         <p className="font-medium text-xl">${price}</p>
         <div className="flex gap-2 items-center">
           <FiPlusCircle
-            className="cursor-pointer"
+            className="cursor-pointer w-5 h-5 text-slate-900 hover:text-slate-500"
             onClick={() => {
               setQuantity((old) => old + 1);
             }}
           />
           <p className="px-6 border border-slate-700 rounded-sm">{quantity}</p>
           <FiMinusCircle
-            className="cursor-pointer"
+            className="cursor-pointer text-slate-900 hover:text-slate-500 w-5 h-5"
             onClick={() => {
               setQuantity((old) => {
                 return old > 1 ? old - 1 : 1;
@@ -74,8 +74,11 @@ function Product({
       </div>
       <div className="flex gap-4">
         <button
-          className="w-1/2 font-medium text-lg border-2 border-slate-400 
-        rounded-md"
+        //   className="w-1/2 p-[2px] font-medium text-lg border hover:border-[1.35px] border-slate-700 
+        // rounded-md hover:border-slate-500"
+          className="w-1/2 p-[2px] font-medium text-lg border  border-slate-950 
+        rounded-md hover:border-slate-400"
+          
           onClick={() => {
             setCartItems([
               ...cartItem,
@@ -87,7 +90,7 @@ function Product({
           Buy now
         </button>
         <button
-          className="w-1/2 font-medium text-lg border-2 border-slate-400 rounded-md"
+          className="w-1/2 p-[2px] font-medium text-lg border border-slate-950  hover:border-slate-400 rounded-md"
           onClick={() => {
             setCartQuantity((old) => old + 1);
             setCartItems([

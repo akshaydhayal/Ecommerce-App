@@ -41,12 +41,13 @@ function Filters() {
           <div className="flex flex-col gap-2 h-[30vh] overflow-auto">
             {categories && categories.map((c) => {
               return (
-                <div className="flex gap-4">
-                  <input type="checkbox" value={c} checked={c===filteredCategory} onChange={(e)=>{
+                <div className="flex gap-4 items-center">
+                  <input type="checkbox" className="h-4 w-4 " value={c} checked={c===filteredCategory} onChange={(e)=>{
                     console.log('checked',e.target.value);
                     setFilterCategory(e.target.value);
                     }}/>
-                  <p className="font-medium text-slate-700">{c}</p>
+                  <p className="font-normal text-black capitalize">{c}</p>
+                  {/* <p className="font-medium text-slate-700">{c}</p> */}
                 </div>
               );
             })}
@@ -63,7 +64,9 @@ function Filters() {
           </div>
           <div className="flex items-center gap-2">
             <input type="text" placeholder="$5" className="placeholder:text-slate-500
-             border px-3 p-1 w-1/3 border-slate-500 rounded-sm" onChange={(e)=>{
+             border px-3 p-1 w-1/3 border-slate-600 rounded-sm" onChange={(e)=>{
+            // <input type="text" placeholder="$5" className="placeholder:text-slate-500
+            //  border px-3 p-1 w-1/3 border-slate-950 hover:border-2  rounded-sm" onChange={(e)=>{ 
               setFilterLowestPrice(Number(e.target.value))
              }}/>
             <p className="text-slate-600">to</p>
@@ -72,7 +75,7 @@ function Filters() {
               setFilterHighestPrice(Number(e.target.value));
              }}/>
           </div>
-          <button className="bg-red-500 text-white font-medium text-base p-[6px] 
+          <button className="bg-red-600 hover:bg-red-500 text-white font-medium text-base p-[6px] 
           rounded-md" onClick={()=>{
             setFilterByPrice({filterLowestPrice,filterHighestPrice});
           }}>Set Price
@@ -82,23 +85,36 @@ function Filters() {
         <div>
           <p className="font-semibold text-lg font-serif">Customer Ratings</p>
           <div className="flex flex-col gap-2">
-            <div className="flex gap-4">
-              <input type="checkbox" value='4+' onChange={(e)=>{
+            <div className="flex gap-4 items-center">
+              <input type="checkbox" className="h-4 w-4" value='4+' onChange={(e)=>{
                 if(e.target.checked){
                   setFilterByRating(e.target.value);
                 }else{
                   setFilterByRating(null);
                 }
               }}/>
-              <p className="font-medium text-slate-700">4★ & above</p>
+              <p className="font-normal text-black">4★ & above</p>
             </div>
-            <div className="flex gap-4">
-              <input type="checkbox" />
-              <p className="font-medium text-slate-700">3★ & above</p>
+            <div className="flex gap-4 items-center">
+              <input type="checkbox" className="h-4 w-4"  value='3+' onChange={(e)=>{
+                if(e.target.checked){
+                  setFilterByRating(e.target.value);
+                }else{
+                  setFilterByRating(null);
+                }
+              }}/>
+              <p className="font-normal text-black">3★ & above</p>
             </div>
-            <div className="flex gap-4">
-              <input type="checkbox" />
-              <p className="font-medium text-slate-700">2★ & above</p>
+            <div className="flex gap-4 items-center">
+              <input type="checkbox" className="h-4 w-4" value='2+' onChange={(e)=>{
+                if(e.target.checked){
+                  setFilterByRating(e.target.value);
+                }else{
+                  setFilterByRating(null);
+                }
+              }}/>
+              {/* <p className="font-medium text-slate-700">2★ & above</p> */}
+              <p className="font-normal text-black">2★ & above</p>
             </div>
         
           </div>
