@@ -13,7 +13,9 @@ Welcome to our Shopping Ecommerce Project! This application is designed to provi
    - Customers can add products to their shopping cart for later purchase.
    - The cart dynamically updates to display the total number of items and the total price.
 
-
+3. **Checkout:**
+   - Once users have added desired items to their shopping cart, they can proceed to the checkout process.
+   - The checkout process involves reviewing the selected items, providing any promo code if available and then confirming the purchase.
 
 ## Video Demo:
 
